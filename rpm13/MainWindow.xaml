@@ -1,0 +1,48 @@
+﻿<Window x:Class="rpm13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rpm13"
+        mc:Ignorable="d"
+        Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="550" Width="800" Icon="/icons8-офис-50.png" MinHeight="400" MinWidth="700" MaxHeight="650" MaxWidth="900">
+    <Grid Background="#FF9ED6A1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="1*"></RowDefinition>
+            <RowDefinition Height="2"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Исходные данные" Margin="0,10,0,0">
+            <DataGrid/>
+        </GroupBox>
+        <GroupBox Header="Результат" Grid.Row="2">
+            <DataGrid/>
+        </GroupBox>
+        <ToolBar VerticalAlignment="Top" Background="#FF2B9340" >
+            <Button x:Name="btnSave" ToolTip="Сохранить" >
+                <Image Source="/icon/icons8-создать-новый-50.png" Width="16" Height="16"></Image>
+            </Button>
+            <Separator></Separator>
+            <Button x:Name="btnOpen" ToolTip="Открыть">
+                <Image Source="/icon/папка-50.png" Width="16" Height="16"></Image>
+            </Button>
+            <Separator></Separator>
+            <Button x:Name="btnInfo" ToolTip="О программе">
+                <Image Source="/icon/icons8-шестерни-50.png" Width="16" Height="16"></Image>
+            </Button>
+        </ToolBar>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <GroupBox Height="100" Width ="200" Header="Исходные данные" Margin="10,10,20,10">
+                <StackPanel/>
+            </GroupBox>
+            <GroupBox Height="100" Width ="200" Header="Результат" HorizontalAlignment="Center" Margin="10,10,20,10">
+                <StackPanel HorizontalAlignment="Center"/>
+            </GroupBox>
+            <GroupBox Header="Кнопки программы" Width ="200" Height="100" Margin="10,10,10,10">
+                <StackPanel HorizontalAlignment="Center"/>
+            </GroupBox>
+        </StackPanel>
+        <GridSplitter Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="3"></GridSplitter>
+    </Grid>
+</Window>
