@@ -1,0 +1,81 @@
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace rpm13
+{
+    class libmas
+    {
+        public static void CrMatr(out int[,] matr, int colomn, int row)
+        {
+            matr = new int[row, colomn];
+        }
+
+        public static void InitMatr(out int[,] matr, int row, int colomn, int RndMax)
+        {
+            Random rnd = new Random();
+            matr = new int[row, colomn];
+            for (int i = 0; i < matr.GetLength(0); i++)
+            {
+                for (int j = 0; j < matr.GetLength(1); j++)
+                {
+                    matr[i, j] = rnd.Next(0, RndMax);
+                }
+            }
+        }
+
+        public static void SaveMatr(ref int[,] matr) 
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.DefaultExt = ".txt";
+            save.Filter = "Âñå ôàéëû(*.*) | *.* |Òåêñòîâûå ôàéëû | *.txt";
+            save.FilterIndex = 2;
+            save.Title = "Ñîõðàíåíèå òàáëèöû";
+
+            if (save.ShowDialog() == true)
+            {
+                StreamWriter file = new StreamWriter(save.FileName);
+                file.WriteLine(matr.GetLength(0));
+                file.WriteLine(matr.GetLength(1));
+                for (int i = 0; i < matr.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matr.GetLength(1); j++)
+                    {
+                        file.WriteLine(matr[i, j]);
+                    }
+                }
+                file.Close();
+            }
+        }
+  
+        public static void OpMatr(ref int[,] matr) 
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.DefaultExt = ".txt";
+            open.Filter = "Âñå ôàéëû(*.*) | *.* |Òåêñòîâûå ôàéëû | *.txt";
+            open.FilterIndex = 2;
+            open.Title = "Îòêðûòèå òàáëèöû";
+
+            if (open.ShowDialog() == true)
+            {
+                StreamReader file = new StreamReader(open.FileName);
+                int row = Convert.ToInt32(file.ReadLine());
+                int colomn = Convert.ToInt32(file.ReadLine());
+
+                matr = new int[row, colomn];
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < colomn; j++)
+                    {
+                        matr[i, j] = Convert.ToInt32(file.ReadLine());
+                    }
+                }
+                file.Close();
+            }
+        }
+    }
+}
