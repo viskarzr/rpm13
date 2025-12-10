@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Data.Common;
+using System.Drawing;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -41,19 +43,8 @@ namespace rpm13
             {
                 row = Convert.ToInt32(tbRow.Text);
                 col = Convert.ToInt32(tbCol.Text);
-                Libmas.InitMatr(out matr, row, col);
-                for (int j = 0; j < matr.GetLength(1); j++)
-                {
-
-                    for(int i =0; i< matr.GetLength(0); i++)
-                    {
-                        if (matr[i,j]/2!=0)
-                        {
-                        
-
-                        }
-                    }
-                }
+                int nech = Libmas.Raz(matr);
+                tbRez.Text = nech.ToString();
             }
             catch (FormatException ex)
             {
@@ -61,6 +52,51 @@ namespace rpm13
                     MessageBox.Show("Данные не верны!");
                     tbCol.Focus();
                 }
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Libmas.SaveMatr(ref matr);
+        }
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            Libmas.OpMatr(ref matr);
+            DataGrid.ItemsSource = VisualArray.ToDataTable(matr).DefaultView;
+        }
+
+        private void btnFull_Click(object sender, RoutedEventArgs e)
+        {
+            bool f1 = Int32.TryParse(tbCol.Text, out int colomn);
+            bool f2 = Int32.TryParse(tbRow.Text, out int row);
+            if (f1 && f2)
+            {
+                Libmas.InitMatr(out matr, row, colomn);
+                DataGrid.ItemsSource = VisualArray.ToDataTable(matr).DefaultView;
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения");
+            }
+
+        }
+
+        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            bool f1;
+            int value;
+            f1 = Int32.TryParse(((TextBox)e.EditingElement).Text, out value);
+            if (f1 == true)
+            {
+                int indexColumn = e.Column.DisplayIndex;
+                int indexRow = e.Row.GetIndex();
+                matr[indexRow, indexColumn] = Convert.ToInt32(((TextBox)e.EditingElement).Text);
+
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения");
             }
         }
     }

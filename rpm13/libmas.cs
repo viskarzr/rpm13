@@ -14,8 +14,7 @@ namespace rpm13
         {
             matr = new int[row, colomn];
         }
-
-       
+    
         public static void InitMatr(out int[,] matr, int row, int colomn)
         {
             Random rnd = new Random();
@@ -29,7 +28,6 @@ namespace rpm13
             }
         }
 
-      
         public static void SaveMatr(ref int[,] matr) 
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -53,8 +51,7 @@ namespace rpm13
                 file.Close();
             }
         }
-
-       
+      
         public static void OpMatr(ref int[,] matr) 
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -78,7 +75,27 @@ namespace rpm13
                     }
                 }
                 file.Close();
+            }           
+        }
+        public static int Raz(int[,] matr)
+        {
+            for (int j = 0; j < matr.GetLength(1); j++)
+            {
+                bool nechet = true; 
+                for (int i = 0; i < matr.GetLength(0); i++)
+                {
+                    if (matr[i, j] % 2 == 0)
+                    {
+                        nechet = false;
+                        break; 
+                    }
+                }
+                if (nechet)
+                {
+                    return j + 1;
+                }
             }
+            return 0;
         }
     }
 }

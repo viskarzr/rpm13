@@ -5,37 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpm13"
         mc:Ignorable="d"
-        Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="700" Width="700" Icon="/icons8-офис-50.png" MinHeight="550" MaxHeight="650" MaxWidth="700">
+        Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="650" Width="700" Icon="/icons8-офис-50.png" MinHeight="550" MaxHeight="650" MaxWidth="700">
     <Grid Background="#FF9ED6A1">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Header="Исходные данные" Margin="5,25,5,5">
-            <DataGrid/>
+            <DataGrid x:Name="DataGrid" CellEditEnding="DataGrid_CellEditEnding"/>
         </GroupBox>
         <ToolBar VerticalAlignment="Top" Background="#FF2B9340" >
-            <Button x:Name="btnSave" ToolTip="Сохранить" >
+            <Button x:Name="btnSave" ToolTip="Сохранить" Click="btnSave_Click" >
                 <Image Source="/icon/icons8-создать-новый-50.png" Width="16" Height="16"></Image>
             </Button>
             <Separator></Separator>
-            <Button x:Name="btnOpen" ToolTip="Открыть">
+            <Button x:Name="btnOpen" ToolTip="Открыть" Click="btnOpen_Click">
                 <Image Source="/icon/папка-50.png" Width="16" Height="16"></Image>
             </Button>
             <Separator></Separator>
-            <Button x:Name="btnFull" ToolTip="Быстрое создание">
-                <Image Source="" Width="16" Height="16"></Image>
+            <Button x:Name="btnFull" ToolTip="Быстрое создание" Click="btnFull_Click">
+                <Image Source="/icon/icons8-добавить-50.png" Width="16" Height="16"></Image>
             </Button>
             <Separator></Separator>
-            <Button x:Name="btnInfo" ToolTip="О программе">
+            <Button x:Name="btnInfo" ToolTip="О программе" Click="btnAbout_Click">
                 <Image Source="/icon/icons8-шестерни-50.png" Width="16" Height="16"></Image>
             </Button>
         </ToolBar>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,4,10,5">
-            <GroupBox Height="150" Width ="200" Header="Исходные данные" Margin="10,10,20,10">
+            <GroupBox Height="150" Width ="200" Header="Исходные данные" Margin="5,10,5,10">
                 <StackPanel>
                     <Label Content="Колонки:" Margin="5,0,5,5"/>
                     <TextBox x:Name="tbCol" TextWrapping="Wrap"  Width="180" Margin="5,5,5,5"/>
@@ -43,13 +42,13 @@
                     <TextBox x:Name="tbRow" TextWrapping="Wrap"  Width="180" Margin="5,5,0,5"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Height="150" Width ="200" Header="Результат" Margin="10,10,20,10">
+            <GroupBox Height="150" Width ="200" Header="Результат" Margin="5,10,5,10">
                 <StackPanel VerticalAlignment="Center">
                     <TextBox x:Name="tbRez" TextWrapping="Wrap" Width="200" Margin="5,5,5,5" IsReadOnly="True"/>
                     <Button x:Name="btnRez" Content="Рассчитать" Margin="5,5,5,5" Click="btnRez_Click"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Кнопки программы" Width ="200" Height="150" Margin="10,10,10,10">
+            <GroupBox Header="Кнопки программы" Width ="200" Height="150" Margin="15,10,5,10">
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="btnAbout" Content="О программе" Margin="5,5,5,5" Click="btnAbout_Click"/>
                     <Button x:Name="btnExit" Content="Выход" Margin="5,5,5,5" Click="btnExit_Click"/>
