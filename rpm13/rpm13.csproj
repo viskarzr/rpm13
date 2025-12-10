@@ -20,6 +20,7 @@
     <None Remove="icon\icons8-создать-новый-50.png" />
     <None Remove="icon\icons8-удалить-48.png" />
     <None Remove="icon\icons8-шестерни-50.png" />
+    <None Remove="icon\папка-50.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <Resource Include="icon\icons8-офис-50.png" />
     <Resource Include="icon\icons8-создать-новый-50.png" />
     <Resource Include="icon\icons8-шестерни-50.png" />
+    <Resource Include="icon\папка-50.png" />
   </ItemGroup>
 
 </Project>

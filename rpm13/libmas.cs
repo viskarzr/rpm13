@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace rpm13
 {
-    class libmas
+    public static class Libmas
     {
         public static void CrMatr(out int[,] matr, int colomn, int row)
         {
             matr = new int[row, colomn];
         }
 
-        public static void InitMatr(out int[,] matr, int row, int colomn, int RndMax)
+       
+        public static void InitMatr(out int[,] matr, int row, int colomn)
         {
             Random rnd = new Random();
             matr = new int[row, colomn];
@@ -23,18 +24,19 @@ namespace rpm13
             {
                 for (int j = 0; j < matr.GetLength(1); j++)
                 {
-                    matr[i, j] = rnd.Next(0, RndMax);
+                    matr[i, j] = rnd.Next(-20,20);
                 }
             }
         }
 
+      
         public static void SaveMatr(ref int[,] matr) 
         {
             SaveFileDialog save = new SaveFileDialog();
             save.DefaultExt = ".txt";
-            save.Filter = "Âñå ôàéëû(*.*) | *.* |Òåêñòîâûå ôàéëû | *.txt";
+            save.Filter = "Все файлы (*.*) | *.* |Текстовые документы| *.txt";
             save.FilterIndex = 2;
-            save.Title = "Ñîõðàíåíèå òàáëèöû";
+            save.Title = "Сохранение документа";
 
             if (save.ShowDialog() == true)
             {
@@ -51,14 +53,15 @@ namespace rpm13
                 file.Close();
             }
         }
-  
+
+       
         public static void OpMatr(ref int[,] matr) 
         {
             OpenFileDialog open = new OpenFileDialog();
             open.DefaultExt = ".txt";
-            open.Filter = "Âñå ôàéëû(*.*) | *.* |Òåêñòîâûå ôàéëû | *.txt";
+            open.Filter = "Все файлы (*.*) | *.* |Текстовые документы| *.txt";
             open.FilterIndex = 2;
-            open.Title = "Îòêðûòèå òàáëèöû";
+            open.Title = "Открытие документа";
 
             if (open.ShowDialog() == true)
             {
