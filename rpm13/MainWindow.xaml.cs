@@ -68,6 +68,7 @@ namespace rpm13
 
         private void btnFull_Click(object sender, RoutedEventArgs e)
         {
+            tbRez.Clear();
             bool f1 = Int32.TryParse(tbCol.Text, out int colomn);
             bool f2 = Int32.TryParse(tbRow.Text, out int row);
             if (f1 && f2)
@@ -93,6 +94,21 @@ namespace rpm13
                 int indexRow = e.Row.GetIndex();
                 matr[indexRow, indexColumn] = Convert.ToInt32(((TextBox)e.EditingElement).Text);
 
+            }
+            else
+            {
+                MessageBox.Show("Введите корректные значения");
+            }
+        }
+
+        private void cmClean_Click(object sender, RoutedEventArgs e)
+        {
+            tbRez.Clear();
+            bool f1 = Int32.TryParse(tbCol.Text, out int colomn);
+            bool f2 = Int32.TryParse(tbRow.Text, out int row);
+            if (f1 && f2)
+            {
+                Libmas.CleanMatr(row, colomn);
             }
             else
             {

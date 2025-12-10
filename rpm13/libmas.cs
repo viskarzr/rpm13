@@ -5,16 +5,30 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace rpm13
 {
     public static class Libmas
     {
+
+        /// <summary>
+        /// создание пустой матрицы
+        /// </summary>
+        /// <param name="matr">матрица</param>
+        /// <param name="colomn">кол-во столбцов</param>
+        /// <param name="row">кол-во строк</param>
         public static void CrMatr(out int[,] matr, int colomn, int row)
         {
             matr = new int[row, colomn];
         }
-    
+
+        /// <summary>
+        /// Заполнение матрицы
+        /// </summary>
+        /// <param name="matr">матрица</param>
+        /// <param name="colomn">кол-во столбцов</param>
+        /// <param name="row">кол-во строк</param>
         public static void InitMatr(out int[,] matr, int row, int colomn)
         {
             Random rnd = new Random();
@@ -28,6 +42,10 @@ namespace rpm13
             }
         }
 
+        /// <summary>
+        /// Сохранение матрицы
+        /// </summary>
+        /// <param name="matr">матрица</param>
         public static void SaveMatr(ref int[,] matr) 
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -51,7 +69,11 @@ namespace rpm13
                 file.Close();
             }
         }
-      
+
+        /// <summary>
+        /// открытие файлв с  матрицей
+        /// </summary>
+        /// <param name="matr">матрица</param>
         public static void OpMatr(ref int[,] matr) 
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -77,6 +99,11 @@ namespace rpm13
                 file.Close();
             }           
         }
+        /// <summary>
+        /// Расчет номера столбца с нечетными числами
+        /// </summary>
+        /// <param name="matr">матрица</param>
+        /// <returns>номер столбца</returns>
         public static int Raz(int[,] matr)
         {
             for (int j = 0; j < matr.GetLength(1); j++)
@@ -97,5 +124,37 @@ namespace rpm13
             }
             return 0;
         }
+
+        /// <summary>
+        /// Очищение матрицы
+        /// </summary>
+        /// <param name="colomn">кол-во столбцов</param>
+        /// <param name="row">кол-во строк</param>
+        /// <returns>матрица с нулями</returns>
+        public static int[,] CleanMatr(int row, int colomn)
+        {
+            try
+            {
+                if (row <= 0 || colomn <= 0)
+                    MessageBox.Show("Размеры матрицы должны быть положительными");
+                int[,] newMatrix = new int[row, colomn];
+                for (int i = 0; i < row; i++)
+                {
+                    for (int j = 0; j < colomn; j++)
+                    {
+                        newMatrix[i, j] = 0;
+                    }
+                }
+
+                return newMatrix;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка очистки матрицы");
+                return new int[row, colomn];
+            }
+            
+        }
+            
     }
 }

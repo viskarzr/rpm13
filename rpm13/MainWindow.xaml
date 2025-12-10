@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpm13"
         mc:Ignorable="d"
-        Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="650" Width="700" Icon="/icons8-офис-50.png" MinHeight="550" MaxHeight="650" MaxWidth="700">
+        Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="650" Width="700" 
+        Icon="/icons8-офис-50.png" MinHeight="550" MinWidth="600"  MaxHeight="650" MaxWidth="700">
     <Grid Background="#FF9ED6A1">
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Header="Исходные данные" Margin="5,25,5,5">
@@ -33,28 +34,38 @@
                 <Image Source="/icon/icons8-шестерни-50.png" Width="16" Height="16"></Image>
             </Button>
         </ToolBar>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10,4,10,5">
-            <GroupBox Height="150" Width ="200" Header="Исходные данные" Margin="5,10,5,10">
-                <StackPanel>
-                    <Label Content="Колонки:" Margin="5,0,5,5"/>
-                    <TextBox x:Name="tbCol" TextWrapping="Wrap"  Width="180" Margin="5,5,5,5"/>
-                    <Label Content="Строки:" Margin="5,5,5,5"/>
-                    <TextBox x:Name="tbRow" TextWrapping="Wrap"  Width="180" Margin="5,5,0,5"/>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Height="150" Width ="200" Header="Результат" Margin="5,10,5,10">
+        <Grid Grid.Row="2" Margin="10,4,10,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Исходные данные" Margin="5,10,5,10">
+                <GroupBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="cmClean" Header="Очистить все поля" Click="cmClean_Click"></MenuItem>
+                    </ContextMenu>
+                </GroupBox.ContextMenu>
                 <StackPanel VerticalAlignment="Center">
-                    <TextBox x:Name="tbRez" TextWrapping="Wrap" Width="200" Margin="5,5,5,5" IsReadOnly="True"/>
-                    <Button x:Name="btnRez" Content="Рассчитать" Margin="5,5,5,5" Click="btnRez_Click"/>
+                    <Label Content="Колонки:" Margin="5,0"/>
+                    <TextBox x:Name="tbCol" TextWrapping="Wrap" Margin="10,0"/>
+                    <Label Content="Строки:" Margin="5,0"/>
+                    <TextBox x:Name="tbRow" TextWrapping="Wrap" Margin="10,0"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Кнопки программы" Width ="200" Height="150" Margin="15,10,5,10">
+            <GroupBox Header="Результат" Grid.Column="1" Margin="5,10,5,10">
                 <StackPanel VerticalAlignment="Center">
-                    <Button x:Name="btnAbout" Content="О программе" Margin="5,5,5,5" Click="btnAbout_Click"/>
-                    <Button x:Name="btnExit" Content="Выход" Margin="5,5,5,5" Click="btnExit_Click"/>
+                    <TextBox x:Name="tbRez" TextWrapping="Wrap"  Margin="10,5" IsReadOnly="True"/>
+                    <Button x:Name="btnRez" Content="Рассчитать" Margin="10,5" Click="btnRez_Click"/>
                 </StackPanel>
             </GroupBox>
-        </StackPanel>
+            <GroupBox Header="Кнопки программы" Grid.Column="2" Margin="15,10,5,10">
+                <StackPanel VerticalAlignment="Center">
+                    <Button x:Name="btnAbout" Content="О программе" Margin="10,5" Click="btnAbout_Click"/>
+                    <Button x:Name="btnExit" Content="Выход" Margin="10,5" Click="btnExit_Click"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
         <StatusBar Grid.Row="4" VerticalContentAlignment="Bottom">
             <TextBlock x:Name="var" Text="Вариант №5"></TextBlock>
             <Separator></Separator>
