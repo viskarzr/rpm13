@@ -26,6 +26,10 @@
                 <Image Source="/icon/папка-50.png" Width="16" Height="16"></Image>
             </Button>
             <Separator></Separator>
+            <Button x:Name="btnFull" ToolTip="Быстрое создание">
+                <Image Source="" Width="16" Height="16"></Image>
+            </Button>
+            <Separator></Separator>
             <Button x:Name="btnInfo" ToolTip="О программе">
                 <Image Source="/icon/icons8-шестерни-50.png" Width="16" Height="16"></Image>
             </Button>
