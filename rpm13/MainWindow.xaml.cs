@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Text;
 using System.Windows;
@@ -113,6 +114,29 @@ namespace rpm13
             else
             {
                 MessageBox.Show("Введите корректные значения");
+            }
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataGrid.CurrentCell.Item != null && DataGrid.CurrentCell.Column != null)
+            {
+                if (DataGrid.CurrentCell.Item is DataRowView dataRowView)
+                {
+                    int rowIndex = dataRowView.Row.Table.Rows.IndexOf(dataRowView.Row);
+                    int columnIndex = DataGrid.CurrentCell.Column.DisplayIndex;
+                    tbMatrix.Text = $"Строка: {rowIndex + 1}, Столбец: {columnIndex + 1}";
+                }
+                else
+                {
+                    int rowIndex = DataGrid.Items.IndexOf(DataGrid.CurrentCell.Item);
+                    int columnIndex = DataGrid.CurrentCell.Column.DisplayIndex;
+                    tbMatrix.Text = $"Строка: {rowIndex + 1}, Столбец: {columnIndex + 1}";
+                }
+            }
+            else
+            {
+                tbMatrix.Text = "Не выбрано";
             }
         }
     }

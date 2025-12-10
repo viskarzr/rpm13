@@ -106,23 +106,28 @@ namespace rpm13
         /// <returns>номер столбца</returns>
         public static int Raz(int[,] matr)
         {
-            for (int j = 0; j < matr.GetLength(1); j++)
+            if (matr == null || matr.Length==0)
             {
-                bool nechet = true; 
-                for (int i = 0; i < matr.GetLength(0); i++)
+                return 0;
+            }
+                for (int j = 0; j < matr.GetLength(1); j++)
                 {
-                    if (matr[i, j] % 2 == 0)
+                    bool nechet = true;
+                    for (int i = 0; i < matr.GetLength(0); i++)
                     {
-                        nechet = false;
-                        break; 
+                        if (matr[i, j] % 2 == 0)
+                        {
+                            nechet = false;
+                            break;
+                        }
+                    }
+                    if (nechet)
+                    {
+                        return j + 1;
                     }
                 }
-                if (nechet)
-                {
-                    return j + 1;
-                }
-            }
-            return 0;
+                return 0;
+            
         }
 
         /// <summary>
