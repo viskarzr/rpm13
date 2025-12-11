@@ -133,5 +133,10 @@ namespace rpm13
                 tbMatrix.Text = "Не выбрано";
             }
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+
+        }
     }
 }

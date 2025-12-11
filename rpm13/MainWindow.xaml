@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:rpm13"
         mc:Ignorable="d"
         Title="Практическая работа №13 - Создание масштабируемого интерфейса приложения." Height="650" Width="700" 
-        Icon="/icons8-офис-50.png" MinHeight="550" MinWidth="600"  MaxHeight="650" MaxWidth="700">
+        Icon="/icons8-офис-50.png" MinHeight="550" MinWidth="600"  MaxHeight="650" MaxWidth="700" Activated="Window_Activated">
     <Grid Background="#FF9ED6A1">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>

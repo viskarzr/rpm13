@@ -23,5 +23,10 @@ namespace rpm13
         {
             InitializeComponent();
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            tb
+        }
     }
 }
