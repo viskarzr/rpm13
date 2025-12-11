@@ -105,16 +105,10 @@ namespace rpm13
         private void cmClean_Click(object sender, RoutedEventArgs e)
         {
             tbRez.Clear();
-            bool f1 = Int32.TryParse(tbCol.Text, out int colomn);
-            bool f2 = Int32.TryParse(tbRow.Text, out int row);
-            if (f1 && f2)
-            {
-                Libmas.CleanMatr(row, colomn);
-            }
-            else
-            {
-                MessageBox.Show("Введите корректные значения");
-            }
+            tbRow.Clear();
+            tbCol.Clear();
+            DataGrid.ItemsSource = null;
+            matr = null;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
