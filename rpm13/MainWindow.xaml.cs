@@ -134,9 +134,22 @@ namespace rpm13
             }
         }
 
-        private void Window_Activated(object sender, EventArgs e)
+        private void Настройки_Click(object sender, RoutedEventArgs e)
         {
+            if (tbCol.Text == null || tbRow.Text == null) // доработать
+            {
+                MessageBox.Show("Поля строк и колонок пусты! Введите значения");
+            }
+            else
+            {
+                Data1.Col1 = Convert.ToInt32(tbCol.Text);
+                Data1.Row1 = Convert.ToInt32(tbRow.Text);
 
+                Setting opt = new Setting();
+                opt.ShowDialog();
+                tbRow.Text = Data1.Row1.ToString();
+                tbCol.Text = Data1.Col1.ToString();
+            }
         }
     }
 }

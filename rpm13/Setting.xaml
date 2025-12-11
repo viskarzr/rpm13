@@ -12,7 +12,7 @@
             <TextBox x:Name="tbRow1" TextWrapping="Wrap" Width="200" Margin="5"/>
             <Label Content="Количество столбцов:"/>
             <TextBox x:Name="tbCol1" TextWrapping="Wrap" Width="200" Margin="5"/>
-            <Button x:Name="btnSave" Content="Сохранить" Width="200" Margin="5"/>
+            <Button x:Name="btnSave" Content="Сохранить" Width="200" Margin="5" Click="btnSave_Click"/>
             <Button x:Name="btnEsc" Content="Отмена" Width="200" Margin="5"/>
         </StackPanel>
 

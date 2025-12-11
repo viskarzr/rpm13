@@ -22,6 +22,7 @@ namespace rpm13
         public WinPass()
         {
             InitializeComponent();
+            txtPass.Focus();
         }
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
@@ -49,9 +50,5 @@ namespace rpm13
             }
         }
 
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            txtPass.Focus();
-        }
     }
 }
